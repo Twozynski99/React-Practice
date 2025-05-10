@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { Device } from './types';
+import DeviceList from'./DeviceList';
+
+const devices: Device[] = [
+  { name: "Home PC", ip: "192.168.1.1", status: "online" },
+  { name: "Router", ip: "192.168.1.4", status: "online" },
+  { name: "Brother Printer", ip: "192.168.1.19", status: "online" },
+  { name: "iOS Device", ip: "192.168.1.32", status: "offline" },
+  { name: "Old Printer", ip: "192.168.1.19", status: "unknown" },
+  { name: "NAS", ip: "192.168.1.73", status: "online" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Network Device Monitor</h1>
+      <DeviceList devices={devices} />
+    </div>
+  );
 }
 
-export default App
+export default App;

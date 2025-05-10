@@ -1,17 +1,19 @@
-interface Device {
-    name: string
-    ip: string
-    status: "online" | "offline" | "unknown"
-};
+import { Device } from './types';
 
-function deviceStatus(props: Device) {
-    if (device.status == "online") {    
-        console.log(`${device.name} is Online at ${device.ip}`);
-    } else if (device.status == "offline") {
-        console.log(`${device.name} is Offline`);
-    } else {
-        console.log(`${device.name} status is unknown :( `);
-    }
+function DeviceCard(props: Device) {
+    const statusMessage =
+        props.status === "online"
+            ? "✅ Online"
+            : props.status === "offline"
+            ? "❌ Offline"
+            : "🤷 Unknown";
+    return (
+        <div>
+            <h3>{props.name}</h3>
+            <p>IP: {props.ip}</p>
+            <p>Status: {statusMessage}</p>
+        </div>
+    );
 };
 
 export default DeviceCard;
